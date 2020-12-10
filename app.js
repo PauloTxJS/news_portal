@@ -6,7 +6,7 @@
     -Definir as configurações comuns da aplicação web, como a porta a ser usada para conexão e a localização 
         dos modelos que são usados para renderizar a resposta.
     -Adicionar novos processos de requisição por meio de "middleware" em qualquer ponto da "fila" de requisições.
-    
+
     ========================================================================================================
 
     O EJS é uma view engine para o mundo node, é uma opção dentre algumas disponíveis. Algumas das mais 
@@ -15,26 +15,29 @@
 */
 
 const express = require('express');
-
-app.set('view engine', 'ejs'); // Avisando pro 'express' que o 'ejs' ficará responsável pelas views
 const app = express();
+const teste = require('./mod_teste');
 
+// Notifying the 'express' that 'ejs' will be responsible for the 'views'
+app.set('view engine', 'ejs'); 
+
+// <Routes>
 app.get('/', (req, res) => {
-    res.send("<html><body>Portal de Noticias</body></html>");
+    res.render("home/index");
 });
 
-app.get('/tecnologia', (req, res) => {
-    res.send("<html><body>Noticias de Tecnologia</body></html>");
-});
-app.get('/moda', (req, res) => {
-    res.send("<html><body>Noticias de Moda</body></html>");
-});
-
-app.get('/beleza', (req, res) => {
-    res.send("<html><body>Noticias de Beleza</body></html>");
+app.get('/formulario_inclusao_noticia', (req, res) => {
+    res.render("admin/form_add_noticia");
 });
 
 
+app.get('/noticias', (req, res) => {
+    res.render("noticias/noticias");
+});
+// </Routes>
+
+
+// Web Server
 app.listen(3000, () => {
-    console.log('Server running in port 3000');
+    console.log('Server running in port 3000', teste());
 });
