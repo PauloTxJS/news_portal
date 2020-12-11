@@ -19,5 +19,6 @@ const app = express();
 
 // Notifying the 'express' that 'ejs' will be responsible for the 'views'
 app.set('view engine', 'ejs'); 
+app.set('views', './app/views');
 
 module.exports = app;
