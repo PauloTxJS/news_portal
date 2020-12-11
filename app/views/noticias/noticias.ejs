@@ -7,5 +7,26 @@
 </head>
 <body>
 	<h1>Notícias</h1>
+
+	<table>
+		<tr>
+			<td>ID</td>
+			<td>Título</td>
+			<td>Notícia</td>
+		</tr>
+		
+		<!--Engine of views with 'EJS'-->
+		<!-- Implementation of 'JavaScript' code within 'views' -->
+		<!-- Everything inside the <% %> tags will be interpreted by JavaScript -->
+		<!-- OBS.: Mixing different language codes in the same file is not a good practice. -->
+		<% for (let i = 0; i < noticias.length; i++) { %>
+		<tr>
+			<td><%= noticias[i].id_noticia %></td>
+			<td><%= noticias[i].titulo %></td>
+			<td><%= noticias[i].noticia %></td>
+		</tr>
+		<% } %>
+
+	</table>
 </body>
 </html>
